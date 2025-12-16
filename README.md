@@ -27,7 +27,7 @@ https://task-manager-frontend-omega-ten.vercel.app
 - Node.js installed on your system
 - MongoDB installed and running locally or a MongoDB Atlas account
 
-## How to Clone the Repository
+**How to Clone the Repository**:
 
 To clone this project from GitHub, follow these steps:
 
@@ -62,11 +62,6 @@ PORT=5000
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
 NODE_ENV=development
 CLIENT_URL=http://localhost:3000
-```
-
-**For MongoDB Atlas (Cloud):**
-```bash
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
 ```
 
 4. Start the backend server:
