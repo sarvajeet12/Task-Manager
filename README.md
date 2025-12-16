@@ -204,7 +204,7 @@ To deploy this project, follow these steps:
 4. Deploy the backend by connecting your repository to the platform and following its deployment instructions.
 
 
-## Live backend API URL ON Render:
+** Live backend API URL ON Render **:
 https://task-manager-backend-qzic.onrender.com/api/working
 
 ### Frontend Deployment
@@ -217,7 +217,7 @@ https://task-manager-backend-qzic.onrender.com/api/working
 3. Upload the contents of the `dist` folder (generated after the build) to your hosting service.
 4. Set the `VITE_API_URL` environment variable to point to your deployed backend API.
 
-## Live Frontend URL ON VERCEL:
+** Live Frontend URL ON VERCEL **:
 https://task-manager-frontend-omega-ten.vercel.app
 
 ### Final Steps
