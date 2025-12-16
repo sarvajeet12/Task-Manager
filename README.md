@@ -59,7 +59,7 @@ npm install
 3. Create a `.env` file in the `server` directory:
 ```bash
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/taskmanager
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
 NODE_ENV=development
 CLIENT_URL=http://localhost:3000
 ```
