@@ -87,11 +87,12 @@ npm install
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/taskmanager
 NODE_ENV=development
+CLIENT_URL=http://localhost:3000
 ```
 
 **For MongoDB Atlas (Cloud):**
 ```bash
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/taskmanager?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
 ```
 
 4. Start the backend server:
