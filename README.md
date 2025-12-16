@@ -7,6 +7,9 @@ The Task Manager is a full-stack web application built using the MERN stack (Mon
 ## Deployment Link: 
 https://task-manager-frontend-omega-ten.vercel.app
 
+**Frontend Deployed on** : Vercel 
+**Backend Deployed on** : Render 
+
 ## Tech Stack
 
 - **Frontend**: React, Tailwind CSS, Vite
