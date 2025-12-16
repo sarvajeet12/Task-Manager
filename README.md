@@ -52,16 +52,23 @@ git clone https://github.com/username/task-manager.git
    cd server
    ```
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env` file in the `server` directory and add the following:
-   ```env
-   MONGO_URI=your_mongodb_connection_string
-   PORT=5000
-   NODE_ENV=development
-   CLIENT_URL=http://localhost:3000
-   ```
+```bash
+npm install
+```
+
+3. Create a `.env` file in the `server` directory:
+```bash
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/taskmanager
+NODE_ENV=development
+CLIENT_URL=http://localhost:3000
+```
+
+**For MongoDB Atlas (Cloud):**
+```bash
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
+```
+
 4. Start the backend server:
    ```bash
    npm start
@@ -188,18 +195,22 @@ Task-Manager/
 
 ## Deployment
 
-To deploy this project, follow these steps:
+### Backend Deployment (Example: Heroku/Railway/Render)
 
-### Backend Deployment
+1. **Set Environment Variables:**
+   - `PORT` (usually auto-assigned by platform)
+   - `MONGODB_URI` (your MongoDB connection string)
+   - `NODE_ENV=production`
 
-1. Choose a cloud platform to host your backend Render.
-2. Set up your environment variables on the platform (e.g., `MONGO_URI`, `PORT`, `NODE_ENV`, `CLIENT_URL`).
-3. Push your backend code to a Git repository if not already done.
-4. Deploy the backend by connecting your repository to the platform and following its deployment instructions.
+2. **Build Command:** (if needed)
+   ```bash
+   npm install
+   ```
 
-
-## Live backend API URL ON Render:
-https://task-manager-backend-qzic.onrender.com/api/working
+3. **Start Command:**
+   ```bash
+   npm start
+   ```
 
 ### Frontend Deployment
 
@@ -208,13 +219,88 @@ https://task-manager-backend-qzic.onrender.com/api/working
    ```bash
    npm run build
    ```
-3. Upload the contents of the `dist` folder (generated after the build) to your hosting service.
-4. Set the `VITE_API_URL` environment variable to point to your deployed backend API.
 
-## Live Frontend URL ON VERCEL:
-https://task-manager-frontend-omega-ten.vercel.app
+2. **Set Environment Variables:**
+   - `VITE_API_URL` - Your backend API URL (e.g., `https://your-api.herokuapp.com/api`)
 
-### Final Steps
+3. **Deploy the `dist` folder** to your hosting platform
 
-- Ensure the frontend and backend are properly connected by testing the application.
-- Update DNS settings if using a custom domain.
+### MongoDB Atlas Setup (Cloud Database)
+
+1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Create a new cluster
+3. Create a database user
+4. Whitelist your IP address (or use `0.0.0.0/0` for all IPs in development)
+5. Get your connection string and update `MONGODB_URI` in your `.env` file
+
+## Development
+
+### Running in Development Mode
+
+**Backend:**
+```bash
+cd server
+npm run dev
+```
+
+**Frontend:**
+```bash
+cd client
+npm run dev
+```
+
+### Building for Production
+
+**Frontend:**
+```bash
+cd client
+npm run build
+```
+
+The production build will be in the `client/dist` directory.
+
+## Features Implementation
+
+### Input Validation
+- **Frontend:** Real-time validation with character count and error messages
+- **Backend:** Server-side validation with proper error responses
+
+### Toast Notifications
+- Success notifications for task creation and deletion
+- Error notifications for failed operations
+- Auto-dismiss after 3 seconds
+
+### Loading States
+- Loading spinner when fetching tasks
+- Disabled buttons during operations
+- "Adding..." and "Deleting..." states
+
+### Error Handling
+- Comprehensive error messages
+- Network error handling
+- Validation error display
+- User-friendly error messages
+
+## Troubleshooting
+
+### MongoDB Connection Issues
+- Ensure MongoDB is running (if using local MongoDB)
+- Check your `MONGODB_URI` in the `.env` file
+- Verify network connectivity for MongoDB Atlas
+
+### CORS Issues
+- Backend has CORS enabled for all origins in development
+- For production, update CORS settings in `server.js`
+
+### Port Already in Use
+- Change the `PORT` in the `.env` file
+- Or kill the process using the port
+
+## License
+
+ISC
+
+## Author
+
+Task Manager Application - MERN Stack
+
