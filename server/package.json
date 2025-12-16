@@ -1,0 +1,21 @@
+{
+  "name": "task-manager-server",
+  "version": "1.0.0",
+  "description": "Task Manager Backend API",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["task-manager", "express", "mongodb"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5"
+  }
+}
+
