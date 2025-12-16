@@ -1,344 +1,220 @@
-# Task Manager - MERN Stack Application
+# Task Manager - MERN Stack
 
-A modern, full-stack Task Manager web application built with the MERN stack (MongoDB, Express, React, Node.js). Features a clean UI with Tailwind CSS, toast notifications, input validation, and comprehensive error handling.
+## Project Description
 
-## Features
+The Task Manager is a full-stack web application built using the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to manage their tasks efficiently by providing features such as creating, updating, deleting, and viewing tasks.
 
-- ✅ Add new tasks with validation
-- ✅ View all tasks in a clean list
-- ✅ Delete tasks with confirmation
-- ✅ Real-time toast notifications
-- ✅ Loading states and error handling
-- ✅ Responsive design with Tailwind CSS
-- ✅ Input validation (frontend & backend)
-- ✅ Modern ES6+ module syntax
+## Deployment Link: 
+https://task-manager-frontend-omega-ten.vercel.app
 
 ## Tech Stack
 
-### Frontend
-- **React 18** - UI library
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Styling
-- **Axios** - HTTP client
-- **React Toastify** - Toast notifications
+- **Frontend**: React, Tailwind CSS, Vite
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
 
-### Backend
-- **Node.js** - Runtime environment
-- **Express** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - ODM for MongoDB
-- **ES Modules** - Modern JavaScript modules
+## Features
 
-## Project Structure
+- User-friendly interface for managing tasks
+- Create, update, delete, and view tasks
+- RESTful API for backend operations
+- Responsive design
 
-```
-Task Manager/
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── App.jsx        # Main application component
-│   │   ├── main.jsx       # React entry point
-│   │   ├── index.css      # Global styles with Tailwind
-│   │   └── services/
-│   │       └── api.js     # API service layer
-│   ├── package.json
-│   ├── vite.config.js
-│   └── tailwind.config.js
-├── server/                 # Express backend
-│   ├── models/
-│   │   └── Task.js        # Task Mongoose model
-│   ├── routes/
-│   │   └── taskRoutes.js  # Task API routes
-│   ├── server.js          # Express server entry point
-│   └── package.json
-└── README.md
-```
+## How to Run the Project
 
-## Prerequisites
+### Prerequisites
 
-Before you begin, ensure you have the following installed:
+- Node.js installed on your system
+- MongoDB installed and running locally or a MongoDB Atlas account
 
-- **Node.js** (v16 or higher)
-- **npm** or **yarn**
-- **MongoDB** (local installation or MongoDB Atlas account)
+## How to Clone the Repository
 
-## Setup Instructions
+To clone this project from GitHub, follow these steps:
 
-### 1. Clone the Repository
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to clone the project.
+3. Run the following command:
+   ```bash
+   git clone <repository-url>
+   ```
+   Replace `<repository-url>` with the actual URL of the GitHub repository.
+
+For example:
 
 ```bash
-git clone <repository-url>
-cd "Task Manager"
+git clone https://github.com/username/task-manager.git
 ```
 
-### 2. Backend Setup
+### Backend Setup
 
-1. Navigate to the server directory:
-```bash
-cd server
-```
-
+1. Navigate to the `server` directory:
+   ```bash
+   cd server
+   ```
 2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file in the `server` directory:
-```bash
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/taskmanager
-NODE_ENV=development
-```
-
-**For MongoDB Atlas (Cloud):**
-```bash
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/taskmanager?retryWrites=true&w=majority
-```
-
-4. Start the backend server:
-```bash
-npm start
-```
-
-For development with auto-reload:
-```bash
-npm run dev
-```
-
-The server will run on `http://localhost:5000`
-
-### 3. Frontend Setup
-
-1. Open a new terminal and navigate to the client directory:
-```bash
-cd client
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. (Optional) Create a `.env` file in the `client` directory if you need to change the API URL:
-```bash
-VITE_API_URL=http://localhost:5000/api
-```
-
-4. Start the development server:
-```bash
-npm run dev
-```
-
-The frontend will run on `http://localhost:3000`
-
-## API Endpoints
-
-### Base URL
-```
-http://localhost:5000/api
-```
-
-### Endpoints
-
-#### 1. Get All Tasks
-- **Method:** `GET`
-- **Endpoint:** `/api/tasks`
-- **Description:** Retrieve all tasks
-- **Response:**
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "_id": "task_id",
-      "title": "Task title",
-      "createdAt": "2024-01-01T00:00:00.000Z",
-      "updatedAt": "2024-01-01T00:00:00.000Z"
-    }
-  ]
-}
-```
-
-#### 2. Create a Task
-- **Method:** `POST`
-- **Endpoint:** `/api/tasks`
-- **Description:** Add a new task
-- **Request Body:**
-```json
-{
-  "title": "Task title"
-}
-```
-- **Response:**
-```json
-{
-  "success": true,
-  "data": {
-    "_id": "task_id",
-    "title": "Task title",
-    "createdAt": "2024-01-01T00:00:00.000Z"
-  },
-  "message": "Task created successfully"
-}
-```
-- **Validation:**
-  - Title is required
-  - Title must be a non-empty string
-  - Title must not exceed 200 characters
-
-#### 3. Delete a Task
-- **Method:** `DELETE`
-- **Endpoint:** `/api/tasks/:id`
-- **Description:** Delete a task by ID
-- **Response:**
-```json
-{
-  "success": true,
-  "message": "Task deleted successfully",
-  "data": {
-    "_id": "task_id",
-    "title": "Task title"
-  }
-}
-```
-
-#### 4. Working Check
-- **Method:** `GET`
-- **Endpoint:** `/api/working`
-- **Description:** Check server status
-- **Response:**
-```json
-{
-  "status": "OK",
-  "message": "Server is working"
-}
-```
-
-## Task Schema
-
-```javascript
-{
-  title: {
-    type: String,
-    required: true,
-    trim: true,
-    minlength: 1,
-    maxlength: 200
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
-}
-```
-
-## Deployment
-
-### Backend Deployment (Example: Heroku/Railway/Render)
-
-1. **Set Environment Variables:**
-   - `PORT` (usually auto-assigned by platform)
-   - `MONGODB_URI` (your MongoDB connection string)
-   - `NODE_ENV=production`
-
-2. **Build Command:** (if needed)
    ```bash
    npm install
    ```
-
-3. **Start Command:**
+3. Create a `.env` file in the `server` directory and add the following:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   PORT=5000
+   NODE_ENV=development
+   CLIENT_URL=http://localhost:3000
+   ```
+4. Start the backend server:
    ```bash
    npm start
    ```
 
-### Frontend Deployment (Example: Vercel/Netlify)
+### Frontend Setup
 
-1. **Build the application:**
+1. Navigate to the `client` directory:
    ```bash
    cd client
-   npm run build
+   ```
+2. Install dependencies:
+
+   ```bash
+   npm install
    ```
 
-2. **Set Environment Variables:**
-   - `VITE_API_URL` - Your backend API URL (e.g., `https://your-api.herokuapp.com/api`)
+3. Create a `.env` file in the `client` directory and add the following:
 
-3. **Deploy the `dist` folder** to your hosting platform
+   ```env
+   VITE_API_URL=http://localhost:5000/api
 
-### MongoDB Atlas Setup (Cloud Database)
+   ```
 
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a new cluster
-3. Create a database user
-4. Whitelist your IP address (or use `0.0.0.0/0` for all IPs in development)
-5. Get your connection string and update `MONGODB_URI` in your `.env` file
+4. Start the frontend development server:
+   ```bash
+   npm run dev
+   ```
 
-## Development
+### Access the Application
 
-### Running in Development Mode
+- Frontend: Open your browser and go to `http://localhost:3000`
+- Backend: The server runs on `http://localhost:5000`
 
-**Backend:**
-```bash
-cd server
-npm run dev
+4. Navigate into the cloned project directory:
+   ```bash
+   cd task-manager
+   ```
+
+## JSON API Examples
+
+### Get All Tasks
+
+**Endpoint**: `GET /api/tasks`
+
+**Response**:
+
+```json
+[
+  {
+    "_id": "12345",
+    "title": "Sample Task",
+    "description": "This is a sample task",
+    "completed": false
+  }
+]
 ```
 
-**Frontend:**
-```bash
-cd client
-npm run dev
+### Create a Task
+
+**Endpoint**: `POST /api/tasks`
+
+**Request Body**:
+
+```json
+{
+  "title": "New Task",
+  "description": "Details about the task"
+}
 ```
 
-### Building for Production
+**Response**:
 
-**Frontend:**
-```bash
-cd client
-npm run build
+```json
+{
+  "_id": "67890",
+  "title": "New Task",
+  "description": "Details about the task",
+  "completed": false
+}
 ```
 
-The production build will be in the `client/dist` directory.
+### Delete a Task
 
-## Features Implementation
+**Endpoint**: `DELETE /api/tasks/:id`
 
-### Input Validation
-- **Frontend:** Real-time validation with character count and error messages
-- **Backend:** Server-side validation with proper error responses
+**Response**:
 
-### Toast Notifications
-- Success notifications for task creation and deletion
-- Error notifications for failed operations
-- Auto-dismiss after 3 seconds
+```json
+{
+  "message": "Task deleted successfully"
+}
+```
 
-### Loading States
-- Loading spinner when fetching tasks
-- Disabled buttons during operations
-- "Adding..." and "Deleting..." states
+## Folder Structure
 
-### Error Handling
-- Comprehensive error messages
-- Network error handling
-- Validation error display
-- User-friendly error messages
+The project is organized as follows:
 
-## Troubleshooting
+```
+Task-Manager/
+├── client/                 # Frontend code
+│   ├── index.html          # Main HTML file
+│   ├── package.json        # Frontend dependencies
+│   ├── postcss.config.js   # PostCSS configuration
+│   ├── tailwind.config.js  # Tailwind CSS configuration
+│   ├── vite.config.js      # Vite configuration
+│   └── src/                # React application source code
+│       ├── App.jsx         # Main React component
+│       ├── index.css       # Global CSS styles
+│       ├── main.jsx        # React entry point
+│       └── services/       # API service files
+│           └── api.js      # API configuration
+├── server/                 # Backend code
+│   ├── package.json        # Backend dependencies
+│   ├── server.js           # Main server file
+│   ├── config/             # Configuration files
+│   │   └── db.js           # Database connection
+│   ├── models/             # Mongoose models
+│   │   └── Task.js         # Task model
+│   └── routes/             # API routes
+│       └── taskRoutes.js   # Task-related routes
+└── README.md               # Project documentation
+```
 
-### MongoDB Connection Issues
-- Ensure MongoDB is running (if using local MongoDB)
-- Check your `MONGODB_URI` in the `.env` file
-- Verify network connectivity for MongoDB Atlas
+## Deployment
 
-### CORS Issues
-- Backend has CORS enabled for all origins in development
-- For production, update CORS settings in `server.js`
+To deploy this project, follow these steps:
 
-### Port Already in Use
-- Change the `PORT` in the `.env` file
-- Or kill the process using the port
+### Backend Deployment
 
-## License
+1. Choose a cloud platform to host your backend Render.
+2. Set up your environment variables on the platform (e.g., `MONGO_URI`, `PORT`, `NODE_ENV`, `CLIENT_URL`).
+3. Push your backend code to a Git repository if not already done.
+4. Deploy the backend by connecting your repository to the platform and following its deployment instructions.
 
-ISC
 
-## Author
+## Live backend API URL ON Render:
+https://task-manager-backend-qzic.onrender.com/api/working
 
-Task Manager Application - MERN Stack
+### Frontend Deployment
 
+1. Choose a hosting service for your frontend, such as Vercel.
+2. Build the frontend for production:
+   ```bash
+   npm run build
+   ```
+3. Upload the contents of the `dist` folder (generated after the build) to your hosting service.
+4. Set the `VITE_API_URL` environment variable to point to your deployed backend API.
+
+## Live Frontend URL ON VERCEL:
+https://task-manager-frontend-omega-ten.vercel.app
+
+### Final Steps
+
+- Ensure the frontend and backend are properly connected by testing the application.
+- Update DNS settings if using a custom domain.
