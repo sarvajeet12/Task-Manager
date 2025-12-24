@@ -1,6 +1,6 @@
 # Task Manager - MERN Stack
 
-## Project Descriptio
+## Project Description
 
 The Task Manager is a full-stack web application built using the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to manage their tasks efficiently by providing features such as creating, updating, deleting, and viewing tasks.
 
